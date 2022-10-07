@@ -13,7 +13,10 @@ import { LoginServiceService } from './services/login-service.service';
 import { RegisterComponent } from './register/register.component';
 import { CreateBookComponent } from './create-book/create-book.component';
 import { SearchEditBookComponent } from './search-edit-book/search-edit-book.component';
-import { DatePipe } from '@angular/common' 
+import { DatePipe } from '@angular/common';
+import { ReadersearchComponent } from './readersearch/readersearch.component';
+import { AuthguardService } from './services/authguard.service';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 
 
 @NgModule({
@@ -24,7 +27,8 @@ import { DatePipe } from '@angular/common'
     LoginComponent,
     RegisterComponent,
     CreateBookComponent,
-    SearchEditBookComponent
+    SearchEditBookComponent,
+    ReadersearchComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +38,7 @@ import { DatePipe } from '@angular/common'
     HttpClientModule
   
   ],
-  providers: [LoginServiceService, DatePipe],
+  providers: [LoginServiceService, DatePipe, AuthguardService,{provide:JWT_OPTIONS,useValue:JWT_OPTIONS},JwtHelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

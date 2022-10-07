@@ -64,6 +64,11 @@ export class CreateBookComponent implements OnInit {
 
   // for book create
   saveBook(){
+    debugger;
+    console.log(localStorage.getItem('userId'));
+    if (localStorage.getItem('userId') != "") {
+    this.bookmodel.bookCreatedBy = Number(localStorage.getItem('userId'));
+  }
     if(this.bookmodel.bookTitle=="")
     {
       alert("Please enter Book Title");
@@ -99,6 +104,9 @@ export class CreateBookComponent implements OnInit {
     
     if(this.isEdit)
     {
+      if (localStorage.getItem('userId') != null) {
+        this.bookmodel.bookModifiedBy = Number(localStorage.getItem('userId'));
+      }
       this._service.editBook(this.bookmodel).subscribe(res=>this.PostSuccess(res),res=>console.log(res));
     }
     else{

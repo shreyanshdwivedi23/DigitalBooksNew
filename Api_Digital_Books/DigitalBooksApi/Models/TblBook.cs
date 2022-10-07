@@ -22,5 +22,6 @@ namespace DigitalBooksApi.Models
         public bool? BookIsBlock { get; set; }
         public DateTime? BookModifiedDate { get; set; }
         public int? BookModifiedBy { get; set; }
+        public string BookAuthor { get; set; }
     }
 }

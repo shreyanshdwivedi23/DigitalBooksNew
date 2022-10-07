@@ -9,6 +9,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 
 namespace DigitalBooksApi.Controllers
 {
@@ -64,12 +65,27 @@ namespace DigitalBooksApi.Controllers
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-            var token = new JwtSecurityToken(_config["jwt:Issuer"],
-                _config["jwt:Audience"],
-                null,
-                expires: DateTime.Now.AddMinutes(120),
-                signingCredentials: credentials);
-            return new JwtSecurityTokenHandler().WriteToken(token);
+            var token = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.Name, login.UserId.ToString()),
+                    new Claim(ClaimTypes.Email, login.UserName.ToString()),
+                    new Claim(ClaimTypes.Gender, login.UserType.ToString())
+                    
+                }),
+                Expires = DateTime.Now.AddMinutes(120),
+                SigningCredentials = credentials
+            };
+            var TokenHandler = new JwtSecurityTokenHandler();
+            var tokenGenerated = TokenHandler.CreateToken(token);
+            return TokenHandler.WriteToken(tokenGenerated).ToString();
+            //var token = new JwtSecurityToken(_config["jwt:Issuer"],
+            //    _config["jwt:Audience"],
+            //    null,
+            //    expires: DateTime.Now.AddMinutes(120),
+            //    signingCredentials: credentials);
+            //return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
         [HttpPost]

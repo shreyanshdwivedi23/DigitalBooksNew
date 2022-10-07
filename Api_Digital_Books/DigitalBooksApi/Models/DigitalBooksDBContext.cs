@@ -37,11 +37,16 @@ namespace DigitalBooksApi.Models
             modelBuilder.Entity<TblBook>(entity =>
             {
                 entity.HasKey(e => e.BookId)
-                    .HasName("PK__TblBook__8BE5A10D0F0B3C1D");
+                    .HasName("PK__TblBook__8BE5A10D7CF88454");
 
                 entity.ToTable("TblBook");
 
                 entity.Property(e => e.BookId).HasColumnName("bookId");
+
+                entity.Property(e => e.BookAuthor)
+                    .HasMaxLength(255)
+                    .IsUnicode(false)
+                    .HasColumnName("bookAuthor");
 
                 entity.Property(e => e.BookCategory)
                     .HasMaxLength(255)

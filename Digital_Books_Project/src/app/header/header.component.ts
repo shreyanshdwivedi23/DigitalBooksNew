@@ -24,10 +24,10 @@ export class HeaderComponent implements OnInit {
 
   IsAuthor(Input:boolean):boolean{
     if(Input){
-      return this._auth.IsAuhtor();
+      return this._auth.IsAuthor();
     }
     else{
-      return !this._auth.IsAuhtor();
+      return !this._auth.IsAuthor();
     }
   }
   Logout(){
@@ -35,7 +35,7 @@ export class HeaderComponent implements OnInit {
     
   }
   userType = localStorage.getItem('userType');
-  userFullname = localStorage.getItem('userFullname');
+  userName = localStorage.getItem('userName');
   
 
 }

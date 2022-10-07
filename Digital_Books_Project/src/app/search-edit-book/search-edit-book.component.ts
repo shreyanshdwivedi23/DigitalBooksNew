@@ -25,6 +25,9 @@ export class SearchEditBookComponent implements OnInit {
   }
 
   searchBook(){
+    if (Number(localStorage.getItem('UserId')) != null) {
+      this.bookModel.bookCreatedBy = Number(localStorage.getItem('UserId'));
+    }
     this._service.SearchAllBooks(this.bookModel).subscribe(res=>this.Success(res)
     ,res=>
     {

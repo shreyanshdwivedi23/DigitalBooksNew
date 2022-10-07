@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { UserData } from '../models/userdata';
 import { LoginServiceService } from '../services/login-service.service';
 import { Router } from '@angular/router';
+import { AuthguardService } from '../services/authguard.service';
 
 @Component({
   selector: 'app-login',
@@ -19,10 +20,14 @@ export class LoginComponent implements OnInit {
   //   firstName: new FormControl(''),
   //   lastName: new FormControl(''),
   // });
-  constructor(private _service:LoginServiceService,private _router:Router) { }
+  userId = 0;
+  userName = '';
+  userType = '';
+  constructor(private _service:LoginServiceService,private _router:Router, private _authservice:AuthguardService) { }
   ErrorMessage:any='';
   UserDataModel:UserData=new UserData();
   ngOnInit(): void {
+    
   }
 
   loginUser(){
@@ -39,11 +44,19 @@ export class LoginComponent implements OnInit {
     
 
     this._service.loginUser(this.UserDataModel).subscribe(res=>{
-     
+      
+      
       localStorage.setItem('token',res.token);
-      console.log(res.user);
-      localStorage.setItem('userType',res.user.userType);
-      localStorage.setItem('userFullname',res.user.userFullname);
+      //console.log(res.user);
+      
+      debugger;
+      this.userId = this._authservice.getCurrentUserId();
+      this.userName = this._authservice.getCurrentUserName();
+      this.userType = this._authservice.getCurrentUserType();
+      
+      localStorage.setItem('userType',this.userType);
+      localStorage.setItem('userName',this.userName);
+      localStorage.setItem('userId',this.userId.toString());
       alert("Login successfull!");
       window.location.href="home";
       this._router.navigate(['home']);

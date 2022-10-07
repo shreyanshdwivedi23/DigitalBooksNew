@@ -19,7 +19,7 @@ export class LoginServiceService {
     return !!localStorage.getItem('token');
   }
 
-  IsAuhtor(){
+  IsAuthor(){
     if(localStorage.getItem('userType') == "Author"){
       return true;
     }else{
@@ -29,8 +29,9 @@ export class LoginServiceService {
 
   logoutUser(){
     localStorage.removeItem('token');
-    localStorage.removeItem('userFullname');
+    localStorage.removeItem('userName');
     localStorage.removeItem('userType');
+    localStorage.removeItem('userId');
     window.location.href="";
     this._router.navigate(['']);
   }
