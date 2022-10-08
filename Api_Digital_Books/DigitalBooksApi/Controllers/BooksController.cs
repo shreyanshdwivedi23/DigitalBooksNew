@@ -16,7 +16,12 @@ namespace DigitalBooksApi.Controllers
     [ApiController]
     public class BooksController : ControllerBase
     {
-        DigitalBooksDBContext db = new DigitalBooksDBContext();
+        DigitalBooksDBContext db;
+
+        public BooksController(DigitalBooksDBContext _db)
+        {
+            db = _db;
+        }
 
         [HttpGet]
         [Route("getAllBooks")]
@@ -43,7 +48,9 @@ namespace DigitalBooksApi.Controllers
         {
 
             var file = Request.Form.Files[0];
-            var pathToSave = Directory.GetCurrentDirectory();
+            var foldername = "Resources/Images/";
+            var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), foldername);
+            //var pathToSave = Directory.GetCurrentDirectory();
             if (file.Length > 0)
             {
                 try
@@ -58,15 +65,15 @@ namespace DigitalBooksApi.Controllers
                         file.CopyTo(stream);
                     }
 
-                    string connectionstring = "DefaultEndpointsProtocol=https;AccountName=sqlvanxxbelt64rwye;AccountKey=vnMB7OGu+EsAZwjsjeZ/+g8ETgwpsbRhDGq8hqsciwpOEJWFD2rsom/0l88SWC+27gDUV1ejUZ5i+AStWGr24w==;EndpointSuffix=core.windows.net";
+                    string connectionstring = "DefaultEndpointsProtocol=https;AccountName=digitalbooksaf80;AccountKey=EceGsWtdsfXGiEe4BJ6WVpW0aga45qsOlq3wSxIm5AwPxHg77ZJKSdCPn3quz+uIB6A52u9Nebzz+ASt4ZhDvQ==;EndpointSuffix=core.windows.net";
                     string containerName = "images";
                     BlobContainerClient container = new BlobContainerClient(connectionstring, containerName);
                     var blob = container.GetBlobClient(fileName);
-                    var blobstream = System.IO.File.OpenRead(fileName);
+                    var blobstream = System.IO.File.OpenRead("Resources/Images/" + fileName);
                     await blob.UploadAsync(blobstream);
                     var URI = blob.Uri.AbsoluteUri;
 
-                    return Ok(new { ImgPath = dbPath, Status = "Success" });
+                    return Ok(new { ImgPath = foldername + dbPath, Status = "Success" });
                 }
                 catch (Exception ex)
                 {

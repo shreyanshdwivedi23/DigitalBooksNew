@@ -17,11 +17,12 @@ namespace DigitalBooksApi.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
-        DigitalBooksDBContext db = new DigitalBooksDBContext();
+        DigitalBooksDBContext db; //= new DigitalBooksDBContext();
         private IConfiguration _config;
-        public LoginController(IConfiguration config)
+        public LoginController(IConfiguration config, DigitalBooksDBContext _db)
         {
             _config = config;
+            db = _db;
         }
 
         [HttpPost]

@@ -22,6 +22,7 @@ export class CreateBookComponent implements OnInit {
   isEdit:boolean=false;
   _ImgName:string='';
   uploadFile(files:any){
+    debugger;
     if(files.length==0){
       return ;
     }

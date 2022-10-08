@@ -16,6 +16,11 @@ using System.Text;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
+using Common;
+using DigitalBooksApi.Models;
+using MassTransit;
 
 namespace DigitalBooksApi
 {
@@ -31,6 +36,32 @@ namespace DigitalBooksApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSwaggerGen(x =>
+            {
+                x.SwaggerDoc("v2", new OpenApiInfo { Title = "Digital Books Api", Version = "v2" });
+                x.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+                {
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer",
+                    BearerFormat = "JWT",
+                    In = ParameterLocation.Header,
+                    Description = "Please enter token enter 'bearer' [space] <token>"
+                });
+                x.AddSecurityRequirement(new OpenApiSecurityRequirement {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference=new OpenApiReference
+                            {
+                                Type=ReferenceType.SecurityScheme,
+                                Id="Bearer"
+                            }
+                        },
+                        new string[]{ }
+                    }
+                });
+            });
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).
                 AddJwtBearer(options =>
                 {
@@ -45,7 +76,22 @@ namespace DigitalBooksApi
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["jwt:Key"]))
                     };
                 });
+            services.AddDbContext<DigitalBooksDBContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DigitalBooksDbConnection")));
+
             services.AddControllers();
+            services.AddMassTransit(x => {
+                x.AddBus(provider => Bus.Factory.CreateUsingRabbitMq(config =>
+                {
+                    config.Host(new Uri("rabbitmq://localhost/"), h =>
+                    {
+                        h.Username("guest");
+                        h.Password("guest");
+                    });
+                }));
+            });
+            services.AddMassTransitHostedService();
+            services.AddConsulConfig(Configuration);
+            //services.AddControllers();
             services.AddSwaggerGen();
         }
 
@@ -56,15 +102,17 @@ namespace DigitalBooksApi
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            
             app.UseHttpsRedirection();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseSwagger();
-            app.UseSwaggerUI();
-
+            app.UseConsul(Configuration);
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/v2/swagger.json", "Digital Books Api v2");
+            });
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

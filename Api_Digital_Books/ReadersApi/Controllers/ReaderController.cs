@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using ReadersApi.Models;
 using System;
 using System.Collections.Generic;
@@ -11,8 +12,13 @@ namespace ReadersApi.Controllers
     public class ReaderController : Controller
     {
 
-        DigitalBooksDBContext db = new DigitalBooksDBContext();
-
+        DigitalBooksDBContext db; //= new DigitalBooksDBContext();
+        private IConfiguration _config;
+        public ReaderController(IConfiguration config, DigitalBooksDBContext _db)
+        {
+            _config = config;
+            db = _db;
+        }
 
 
         [HttpGet]
