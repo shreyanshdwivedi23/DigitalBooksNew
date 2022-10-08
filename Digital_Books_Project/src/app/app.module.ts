@@ -17,6 +17,8 @@ import { DatePipe } from '@angular/common';
 import { ReadersearchComponent } from './readersearch/readersearch.component';
 import { AuthguardService } from './services/authguard.service';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { ViewbookdetailsComponent } from './viewbookdetails/viewbookdetails.component';
+import { MyBooksComponent } from './my-books/my-books.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
     RegisterComponent,
     CreateBookComponent,
     SearchEditBookComponent,
-    ReadersearchComponent
+    ReadersearchComponent,
+    ViewbookdetailsComponent,
+    MyBooksComponent
   ],
   imports: [
     BrowserModule,

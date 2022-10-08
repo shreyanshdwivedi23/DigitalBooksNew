@@ -8,10 +8,10 @@
     <div class="card-header">
       Search Book
     </div>
-  <div class="container">
+  <div class="container p-5">
   
-      <div class="form-row">
-        <div class="form-group col-md-6">
+      <div class="row">
+        <div class="form-group col-md-6 col-xs-12">
           <label for="inputEmail4">Title</label>
           <input type="text" class="form-control" [(ngModel)]="bookModel.bookTitle" id="inputEmail4" placeholder="Book Title">
         </div>
@@ -21,7 +21,7 @@
         </div>
         
       </div>
-      <div class="form-row">
+      <div class="row mt-2">
           <div class="form-group col-md-6">
             <label for="inputEmail4">Released Date</label>
             <input type="date" class="form-control" [(ngModel)]="bookModel.bookReleasedDate" id="inputEmail4" placeholder="Released Date">
@@ -37,11 +37,31 @@
         </div>
         <br/>
         <label style="color: red;">{{ErrorMessage}}</label>
-      
-  <table class="table">
+
+<div class="custom_card" *ngFor="let book of bookModels">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="https://localhost:44396/{{book.bookImage}}">
+          
+          <div class="card-body">
+            <h5 class="card-title">{{book.bookTitle}}</h5>
+            
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">category : {{book.bookCategory}}</li>
+            <li class="list-group-item">Price : {{book.bookPrice}}</li>
+            
+          </ul>
+          <div class="card-body">
+            <button class="btn btn-primary" type="button" (click)="viewBookDetails(book.bookId)">View</button>
+            
+          </div>
+        </div>
+      </div>
+
+  <!-- <table class="table">
       <thead class="thead-dark">
         <tr>
-          <!-- <th scope="col">#Sno</th> -->
+          
           <th scope="col">Title</th>
           <th scope="col">Category</th>
           <th scope="col">Price</th>
@@ -55,11 +75,11 @@
               <td>{{book.bookCategory}}</td>
               <td>{{book.bookPrice}}</td>            
               <td><img style="height:100px;width:100px;" src="https://localhost:44396/{{book.bookImage}}"></td>
-              <td><input type="button" value="Buy" (click)="buyBook(book.bookId)">
+              <td><input type="button" value="Buy" (click)="viewBookDetails(book.bookId)">
           </tr>
         
       </tbody>
-    </table>
+    </table> -->
   </div>
   </div>
   

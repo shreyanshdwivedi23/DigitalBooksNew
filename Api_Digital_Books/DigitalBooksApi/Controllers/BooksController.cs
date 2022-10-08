@@ -1,4 +1,5 @@
-﻿using DigitalBooksApi.Models;
+﻿using Azure.Storage.Blobs;
+using DigitalBooksApi.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualBasic;
@@ -38,26 +39,64 @@ namespace DigitalBooksApi.Controllers
 
         [HttpPost, DisableRequestSizeLimit]
         [Route("Upload")]
-        public IActionResult upload()
+        public async Task<IActionResult> upload()
         {
+
             var file = Request.Form.Files[0];
-            var foldername = "Resources/Images";
-            var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), foldername);
+            var pathToSave = Directory.GetCurrentDirectory();
             if (file.Length > 0)
             {
-                var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-                var fullPath = Path.Combine(pathToSave, fileName);
-                var dbPath = Path.Combine(foldername, fileName);
-                using (var stream = new FileStream(fullPath, FileMode.Create))
+                try
                 {
-                    file.CopyTo(stream);
+                    var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                    var _filename = Path.GetFileNameWithoutExtension(fileName);
+                    fileName = _filename + DateTime.Now.ToString("yyyyMMddHHmmss") + ".jpg";
+                    var fullPath = Path.Combine(pathToSave, fileName);
+                    var dbPath = fileName;
+                    using (var stream = new FileStream(fullPath, FileMode.Create))
+                    {
+                        file.CopyTo(stream);
+                    }
+
+                    string connectionstring = "DefaultEndpointsProtocol=https;AccountName=sqlvanxxbelt64rwye;AccountKey=vnMB7OGu+EsAZwjsjeZ/+g8ETgwpsbRhDGq8hqsciwpOEJWFD2rsom/0l88SWC+27gDUV1ejUZ5i+AStWGr24w==;EndpointSuffix=core.windows.net";
+                    string containerName = "images";
+                    BlobContainerClient container = new BlobContainerClient(connectionstring, containerName);
+                    var blob = container.GetBlobClient(fileName);
+                    var blobstream = System.IO.File.OpenRead(fileName);
+                    await blob.UploadAsync(blobstream);
+                    var URI = blob.Uri.AbsoluteUri;
+
+                    return Ok(new { ImgPath = dbPath, Status = "Success" });
                 }
-                return Ok(new { ImgPath = dbPath, Status = "Success" });
+                catch (Exception ex)
+                {
+                    return BadRequest();
+                }
+
             }
             else
             {
                 return BadRequest();
             }
+
+            //var file = Request.Form.Files[0];
+            //var foldername = "Resources/Images";
+            //var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), foldername);
+            //if (file.Length > 0)
+            //{
+            //    var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+            //    var fullPath = Path.Combine(pathToSave, fileName);
+            //    var dbPath = Path.Combine(foldername, fileName);
+            //    using (var stream = new FileStream(fullPath, FileMode.Create))
+            //    {
+            //        file.CopyTo(stream);
+            //    }
+            //    return Ok(new { ImgPath = dbPath, Status = "Success" });
+            //}
+            //else
+            //{
+            //    return BadRequest();
+            //}
         }
 
         [HttpDelete]

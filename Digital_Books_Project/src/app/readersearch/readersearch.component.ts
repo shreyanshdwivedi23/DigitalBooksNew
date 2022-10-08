@@ -18,7 +18,7 @@ export class ReadersearchComponent implements OnInit {
   ErrorMessage:any='';
   isEdit:boolean=false;
   Success(input:any){
-    debugger;
+    //debugger;
     console.log("search -->");
     console.log(input);
     this.bookModels = input;
@@ -35,9 +35,13 @@ export class ReadersearchComponent implements OnInit {
   }
 
 
-  buyBook(bookId:any){
+  viewBookDetails(bookId:any){
 
     if (this._loginservice.logginIn()){
+      debugger;
+      console.log("book id ->" + bookId);
+      console.log(btoa(bookId));
+      this._router.navigate(['bookDetails', btoa(bookId)]);
       //this._service.Bookdelete(bookId).subscribe(res=>this.PostSuccess(res),res=>console.log(res));
     }
     else{
@@ -64,7 +68,7 @@ export class ReadersearchComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    debugger;
+    //debugger;
     this.searchBook();
   }
 

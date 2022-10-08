@@ -1,0 +1,15 @@
+.custom_card .card {
+    display: inline-block;
+    float: left;
+    margin: 1rem;
+}
+
+.custom_card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+ul.list-group li {
+    border: none !important;
+    padding: 5px 20px;
+}

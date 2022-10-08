@@ -9,6 +9,18 @@
           "Port": 44396
         }
       ],
+      "UpstreamPathTemplate": "/api/gateway/Books/getAllBooks",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Books/getAllBooks",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44396
+        }
+      ],
       "UpstreamPathTemplate": "/api/gateway/catalog/findall",
       "UpstreamHttpMethod": [ "Get" ]
     },
