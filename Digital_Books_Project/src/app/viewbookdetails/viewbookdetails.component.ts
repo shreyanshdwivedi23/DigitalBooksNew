@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { bookData } from '../models/bookData';
+import { UserData } from '../models/userdata';
 import { ReaderServiceService } from '../services/reader-service.service';
 @Component({
   selector: 'app-viewbookdetails',
@@ -13,6 +14,7 @@ export class ViewbookdetailsComponent implements OnInit {
   
   bookId = 0;
   bookModel: bookData = new bookData();
+  userModel:UserData = new UserData();
   ngOnInit(): void {
     //debugger;
     //alert("reached");
@@ -33,9 +35,20 @@ export class ViewbookdetailsComponent implements OnInit {
     //debugger;
     this.bookModel = res;
    }
+   
 
-    buyBooks(id:any){
-      this._readerservice.BuyBook(id).subscribe(res=>
+    buyBook(){
+      
+          debugger;
+         let obj : any ={ 
+          
+          "BookId" : this.bookModel.bookId,
+          "TblLogin" : {
+            "userEmail" : this.userModel.userEmail,
+            "userName" : this.userModel.userName
+          }
+      };
+      this._readerservice.BuyBook(obj).subscribe(res=>
         {      
           alert("Book purchased successfully");
           

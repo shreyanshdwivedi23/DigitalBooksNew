@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
@@ -14,5 +15,11 @@ namespace ReadersApi.Models
         public DateTime? PurchaseDate { get; set; }
         public int? CreatedBy { get; set; }
         public DateTime? CreatedDate { get; set; }
+
+        [NotMapped]
+        public TblLogin TblLogin { get; set; } = new TblLogin();
+
+        public TblBook TblBook { get; set; } = new TblBook();
+
     }
 }

@@ -51,31 +51,49 @@ namespace ReadersApi.Controllers
 
         [HttpPost]
         [Route("buyBook")]
-        public IActionResult buyBook(int bookId, int readerId)
+        public string buyBook(TblBookPurchase purchaseObj)
         {
-            IActionResult response = Unauthorized();
-            //book.BookCreatedDate = DateTime.Now;
-            //db.TblBooks.Add(book);
-            //db.SaveChanges();
-            response = Ok();
-            return response;
-            //db.SaveChanges();
+            purchaseObj.OrderNo = "ODRN"+DateTime.Now.ToString("yyyyMMddHHmmss");
+            purchaseObj.TblLogin.UserType = "Reader";
+            purchaseObj.TblLogin.UserFullname = purchaseObj.TblLogin.UserName;
+            db.TblLogins.Add(purchaseObj.TblLogin);
+            db.SaveChanges();
+            purchaseObj.ReaderId = purchaseObj.TblLogin.UserId; // Yes it's here
+            purchaseObj.CreatedBy = purchaseObj.TblLogin.UserId; // Yes it's here
+            db.TblBookPurchases.Add(purchaseObj);
+            //response = Ok();
+            
+            db.SaveChanges();
+            return purchaseObj.OrderNo;
         }
 
         [HttpGet]
         [Route("getMyBooks")]
-        public IEnumerable<TblBook> getMyBooks(int id)
+        public List<TblBookPurchase> getMyBooks(TblLogin loginobj)
         {
-            //return (from b in db.TblBooks 
-            //        join u in db.TblLogins on b.BookCreatedBy equals u.UserId
-            //    ) 
-            IActionResult response = Unauthorized();
-            //book.BookCreatedDate = DateTime.Now;
-            //db.TblBooks.Add(book);
-            //db.SaveChanges();
-            response = Ok();
-            return db.TblBooks;
-            //db.SaveChanges();
+            List<TblBookPurchase> listbook = new List<TblBookPurchase>();
+
+            db.TblBooks
+                .Join(db.TblLogins, b => b.BookCreatedBy,
+            u => u.UserId, (b, u) => new { b, BookUserName = u.UserName })
+                .Join(db.TblBookPurchases.Where(b => b.ReaderId == loginobj.UserId), bu => bu.b.BookId,
+            p => p.BookId, (bu, p) => new { bu, p}).ToList().ForEach(bup => {
+                TblBookPurchase objtblbook = bup.p;
+
+                objtblbook.TblBook = bup.bu.b;
+                objtblbook.TblBook.BookUserName = bup.bu.BookUserName;
+                listbook.Add(objtblbook);
+            });
+            return listbook;
+        }
+
+        [HttpDelete]
+        [Route("refundBook")]
+        public string refundBook(TblBookPurchase purchaseObj)
+        {
+            db.TblBookPurchases.Remove(purchaseObj);
+            db.SaveChanges();
+            return "Refund completed successfully.";
         }
     }
 }

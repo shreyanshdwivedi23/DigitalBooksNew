@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
@@ -23,5 +24,11 @@ namespace ReadersApi.Models
         public DateTime? BookModifiedDate { get; set; }
         public int? BookModifiedBy { get; set; }
         public string BookAuthor { get; set; }
+
+        [NotMapped]
+        public string BookUserName
+        {
+            get; set;
+        }
     }
 }

@@ -158,45 +158,57 @@ namespace DigitalBooksApi.Controllers
 
         [HttpPost]
         [Route("searchAllBooks")]
-        public IEnumerable<TblBook> searchAllBooks(TblBook book)
+        public List<TblBook> searchAllBooks(TblBook book)
         {
-            
-            if (db.TblLogins.Any(x => x.UserName == book.BookAuthor) && book.BookAuthor != "")
-            {
-                book.BookCreatedBy = Convert.ToInt32(db.TblLogins.Where(x => x.UserName == book.BookAuthor).Select(x => new {x.UserId}).FirstOrDefault());
-                //db.TblLogins.Where(x => x.UserName == book.BookAuthor).FirstOrDefault();
-            }
-            List<TblBook> allAuthorBooks = new List<TblBook>();
-            if (book.BookTitle != "" && book.BookPublisher != "" && (book.BookCreatedBy !=null && book.BookCreatedBy != 0))
-            {
-                allAuthorBooks = db.TblBooks.Where(x => x.BookTitle.Contains(book.BookTitle) && x.BookPublisher.Contains(book.BookPublisher) && x.BookPublisher.Equals(book.BookCreatedBy)).ToList();
-                return allAuthorBooks;
-            }
-            else if(book.BookTitle != "")
-            {
-                allAuthorBooks = db.TblBooks.Where(x => x.BookTitle.Contains(book.BookTitle)).ToList();
-                return allAuthorBooks;
-            }
-            else if (book.BookPublisher != "")
-            {
-                allAuthorBooks = db.TblBooks.Where(x => x.BookPublisher.Contains(book.BookPublisher)).ToList();
-                return allAuthorBooks;
-            }
-            else if (book.BookCreatedBy != null && book.BookCreatedBy != 0)
-            {
-                allAuthorBooks = db.TblBooks.Where(x => x.BookPublisher.Equals(book.BookCreatedBy)).ToList();
-                return allAuthorBooks;
-            }
-            else if (book.BookTitle != "" || book.BookPublisher != "" || (book.BookCreatedBy != null && book.BookCreatedBy != 0))
-            {
-                allAuthorBooks = db.TblBooks.Where(x => x.BookTitle.Contains(book.BookTitle) || x.BookPublisher.Contains(book.BookPublisher) || x.BookCreatedBy.Equals(book.BookCreatedBy)).ToList();
-                return allAuthorBooks;
-            }
-            else
-            {
-                return db.TblBooks;
-            }          
-            
+            List<TblBook> listbook = new List<TblBook>();
+
+            db.TblBooks.Where(x => (String.IsNullOrEmpty(book.BookTitle) || x.BookTitle.Contains(book.BookTitle)) &&
+            (String.IsNullOrEmpty(book.BookCategory) || x.BookCategory.Contains(book.BookCategory)) &&
+            (String.IsNullOrEmpty(book.BookAuthor) || x.BookAuthor.Contains(book.BookAuthor)) &&
+            (String.IsNullOrEmpty(book.BookPrice) || x.BookPrice.Equals(book.BookPrice))).Join(db.TblLogins, t => t.BookCreatedBy,
+            k => k.UserId, (t, k) => new { t, BookUserName = k.UserName }).ToList().ForEach(o => {
+                TblBook objtblbook = o.t;
+                objtblbook.BookUserName = o.BookUserName;
+                listbook.Add(objtblbook);
+                });
+            return listbook;
+
+            //if (db.TblLogins.Any(x => x.UserName == book.BookAuthor) && book.BookAuthor != "")
+            //{
+            //    book.BookCreatedBy = Convert.ToInt32(db.TblLogins.Where(x => x.UserName == book.BookAuthor).Select(x => new {x.UserId}).FirstOrDefault());
+            //    //db.TblLogins.Where(x => x.UserName == book.BookAuthor).FirstOrDefault();
+            //}
+            //List<TblBook> allAuthorBooks = new List<TblBook>();
+            //if (book.BookTitle != "" && book.BookPublisher != "" && (book.BookCreatedBy !=null && book.BookCreatedBy != 0))
+            //{
+            //    allAuthorBooks = db.TblBooks.Where(x => x.BookTitle.Contains(book.BookTitle) && x.BookPublisher.Contains(book.BookPublisher) && x.BookPublisher.Equals(book.BookCreatedBy)).ToList();
+            //    return allAuthorBooks;
+            //}
+            //else if(book.BookTitle != "")
+            //{
+            //    allAuthorBooks = db.TblBooks.Where(x => x.BookTitle.Contains(book.BookTitle)).ToList();
+            //    return allAuthorBooks;
+            //}
+            //else if (book.BookPublisher != "")
+            //{
+            //    allAuthorBooks = db.TblBooks.Where(x => x.BookPublisher.Contains(book.BookPublisher)).ToList();
+            //    return allAuthorBooks;
+            //}
+            //else if (book.BookCreatedBy != null && book.BookCreatedBy != 0)
+            //{
+            //    allAuthorBooks = db.TblBooks.Where(x => x.BookPublisher.Equals(book.BookCreatedBy)).ToList();
+            //    return allAuthorBooks;
+            //}
+            //else if (book.BookTitle != "" || book.BookPublisher != "" || (book.BookCreatedBy != null && book.BookCreatedBy != 0))
+            //{
+            //    allAuthorBooks = db.TblBooks.Where(x => x.BookTitle.Contains(book.BookTitle) || x.BookPublisher.Contains(book.BookPublisher) || x.BookCreatedBy.Equals(book.BookCreatedBy)).ToList();
+            //    return allAuthorBooks;
+            //}
+            //else
+            //{
+            //    return db.TblBooks;
+            //}          
+
         }
     }
 }

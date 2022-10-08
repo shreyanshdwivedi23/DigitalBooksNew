@@ -16,15 +16,15 @@
           <input type="text" class="form-control" [(ngModel)]="bookModel.bookTitle" id="inputEmail4" placeholder="Book Title">
         </div>
         <div class="form-group col-md-6">
-          <label for="inputPassword4">Publisher</label>
-          <input type="text" class="form-control" [(ngModel)]="bookModel.bookPublisher" id="inputPassword4" placeholder="Publisher">
+          <label for="inputPassword4">Price</label>
+          <input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="form-control" [(ngModel)]="bookModel.bookPrice" id="inputPassword4" placeholder="Book Price">
         </div>
         
       </div>
       <div class="row mt-2">
           <div class="form-group col-md-6">
-            <label for="inputEmail4">Released Date</label>
-            <input type="date" class="form-control" [(ngModel)]="bookModel.bookReleasedDate" id="inputEmail4" placeholder="Released Date">
+            <label for="inputCategory">Category</label>
+            <input type="text" class="form-control" [(ngModel)]="bookModel.bookCategory" id="inputCategory" placeholder="Category">
           </div>
           <div class="form-group col-md-6">
               <label for="inputPassword4">Author</label>
@@ -48,8 +48,10 @@
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">category : {{book.bookCategory}}</li>
+            <li class="list-group-item">Publisher : {{book.bookPublisher}}</li>
             <li class="list-group-item">Price : {{book.bookPrice}}</li>
-            
+            <li class="list-group-item">Author : {{book.bookUserName}}</li>
+            <li class="list-group-item">Publish Date : {{book.bookReleasedDate | date: 'dd/MM/yyyy'}}</li>
           </ul>
           <div class="card-body">
             <button class="btn btn-primary" type="button" (click)="viewBookDetails(book.bookId)">View</button>

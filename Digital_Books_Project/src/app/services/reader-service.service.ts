@@ -18,10 +18,12 @@ export class ReaderServiceService {
     return this.http.get<any>(this._viewBookDetailsUrl, {params:new HttpParams().append("id",id)});
   }
 
-  BuyBook(id:any)
+  BuyBook(purchaseObj:any)
   {
-    this.userId = Number(localStorage.getItem('userId'));
-    return this.http.post<any>(this._buyBookUrl, id);
+    debugger;
+    console.log(purchaseObj);
+    //this.userId = Number(localStorage.getItem('userId'));
+    return this.http.post<any>(this._buyBookUrl, purchaseObj);
   }
 
   getMyBooks(id:any)

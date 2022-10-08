@@ -37,17 +37,17 @@ export class ReadersearchComponent implements OnInit {
 
   viewBookDetails(bookId:any){
 
-    if (this._loginservice.logginIn()){
+    //if (this._loginservice.logginIn()){
       debugger;
       console.log("book id ->" + bookId);
       console.log(btoa(bookId));
       this._router.navigate(['bookDetails', btoa(bookId)]);
       //this._service.Bookdelete(bookId).subscribe(res=>this.PostSuccess(res),res=>console.log(res));
-    }
-    else{
-      alert("Please sign up to proceed.!");
-      this._router.navigate(['register']);
-    }
+    // }
+    // else{
+    //   alert("Please sign up to proceed.!");
+    //   this._router.navigate(['register']);
+    // }
 
     
   }

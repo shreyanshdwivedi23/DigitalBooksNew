@@ -14,4 +14,5 @@ export class bookData{
     bookReleasedDate?:string;
     bookIsDelete:boolean=false;
     bookIsBlock:boolean=false;
+    bookUserName:string='';
 }

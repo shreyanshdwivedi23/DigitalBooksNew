@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
@@ -23,5 +25,8 @@ namespace DigitalBooksApi.Models
         public DateTime? BookModifiedDate { get; set; }
         public int? BookModifiedBy { get; set; }
         public string BookAuthor { get; set; }
+
+        [NotMapped]
+        public string BookUserName { get; set; }
     }
 }
