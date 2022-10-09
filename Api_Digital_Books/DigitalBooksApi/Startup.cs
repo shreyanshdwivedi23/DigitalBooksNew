@@ -21,6 +21,7 @@ using Microsoft.OpenApi.Models;
 using Common;
 using DigitalBooksApi.Models;
 using MassTransit;
+using DigitalBooksApi.Consumer;
 
 namespace DigitalBooksApi
 {
@@ -79,7 +80,10 @@ namespace DigitalBooksApi
             services.AddDbContext<DigitalBooksDBContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DigitalBooksDbConnection")));
 
             services.AddControllers();
-            services.AddMassTransit(x => {
+
+            services.AddMassTransit(x =>
+            {
+                x.AddConsumer<paymentConsumer>();
                 x.AddBus(provider => Bus.Factory.CreateUsingRabbitMq(config =>
                 {
                     config.Host(new Uri("rabbitmq://localhost/"), h =>
@@ -87,8 +91,15 @@ namespace DigitalBooksApi
                         h.Username("guest");
                         h.Password("guest");
                     });
+
+                    config.ReceiveEndpoint("orderQueue", ep =>
+                    {
+                        ep.ConfigureConsumer<paymentConsumer>(provider);
+                    });
                 }));
+
             });
+
             services.AddMassTransitHostedService();
             services.AddConsulConfig(Configuration);
             //services.AddControllers();

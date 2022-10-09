@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -27,6 +26,9 @@ namespace DigitalBooksApi.Models
         public string BookAuthor { get; set; }
 
         [NotMapped]
-        public string BookUserName { get; set; }
+        public string BookUserName
+        {
+            get; set;
+        }
     }
 }

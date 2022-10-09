@@ -43,21 +43,24 @@ export class ViewbookdetailsComponent implements OnInit {
          let obj : any ={ 
           
           "BookId" : this.bookModel.bookId,
-          "TblLogin" : {
+          "TblLoginObj" : {
             "userEmail" : this.userModel.userEmail,
             "userName" : this.userModel.userName
           }
       };
       this._readerservice.BuyBook(obj).subscribe(res=>
-        {      
-          alert("Book purchased successfully");
-          
-        },res=>
+        this.PostBuySuccess(res),res=>
         {
           console.log(res);
           alert("some error occured");
           //document.getElementById('btnErrorMsg')?.click();
         });
     }
+
+    PostBuySuccess(res:any){
+      console.log(res);
+      //alert(res);
+      alert("Order placed successfully with order number - " + res.status);
+     }
 
 }

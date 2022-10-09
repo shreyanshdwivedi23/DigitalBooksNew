@@ -47,6 +47,33 @@ namespace DigitalBooksApi.Controllers
         public async Task<IActionResult> upload()
         {
 
+            //var file = Request.Form.Files[0];
+            //var foldername = "Resources/Images/";
+            //var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), foldername);
+            ////var pathToSave = Directory.GetCurrentDirectory();
+            //if (file.Length > 0)
+            //{
+            //    try
+            //    {
+            //        var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+            //        var _filename = Path.GetFileNameWithoutExtension(fileName);
+            //        fileName = _filename + DateTime.Now.ToString("yyyyMMddHHmmss") + ".jpg";
+            //        var fullPath = Path.Combine(pathToSave, fileName);
+            //        var dbPath = fileName;
+            //        using (var stream = new FileStream(fullPath, FileMode.Create))
+            //        {
+            //            file.CopyTo(stream);
+            //        }
+
+            //        string connectionstring = "DefaultEndpointsProtocol=https;AccountName=digitalbookimages;AccountKey=hIhstj+zFMeTvf4MAIs1SlxEdAuCo6dZnsSf70vnPjIUxjyWQf8nMkwlLPPEj7t4ErJnFW6ACavd+AStKVlkNA==;EndpointSuffix=core.windows.net";
+            //        string containerName = "images";
+            //        BlobContainerClient container = new BlobContainerClient(connectionstring, containerName);
+            //        var blob = container.GetBlobClient(fileName);
+            //        var blobstream = System.IO.File.OpenRead("Resources/Images/" + fileName);
+            //        await blob.UploadAsync(blobstream);
+            //        var URI = blob.Uri.AbsoluteUri;
+
+            //        return Ok(new { ImgPath = foldername + dbPath, Status = "Success" });
             var file = Request.Form.Files[0];
             var foldername = "Resources/Images/";
             var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), foldername);
@@ -65,7 +92,7 @@ namespace DigitalBooksApi.Controllers
                         file.CopyTo(stream);
                     }
 
-                    string connectionstring = "DefaultEndpointsProtocol=https;AccountName=digitalbooksaf80;AccountKey=EceGsWtdsfXGiEe4BJ6WVpW0aga45qsOlq3wSxIm5AwPxHg77ZJKSdCPn3quz+uIB6A52u9Nebzz+ASt4ZhDvQ==;EndpointSuffix=core.windows.net";
+                    string connectionstring = "DefaultEndpointsProtocol=https;AccountName=digitalbookimages;AccountKey=hIhstj+zFMeTvf4MAIs1SlxEdAuCo6dZnsSf70vnPjIUxjyWQf8nMkwlLPPEj7t4ErJnFW6ACavd+AStKVlkNA==;EndpointSuffix=core.windows.net";
                     string containerName = "images";
                     BlobContainerClient container = new BlobContainerClient(connectionstring, containerName);
                     var blob = container.GetBlobClient(fileName);
@@ -73,7 +100,7 @@ namespace DigitalBooksApi.Controllers
                     await blob.UploadAsync(blobstream);
                     var URI = blob.Uri.AbsoluteUri;
 
-                    return Ok(new { ImgPath = foldername + dbPath, Status = "Success" });
+                    return Ok(new { ImgPath = dbPath, Status = "Success" });
                 }
                 catch (Exception ex)
                 {

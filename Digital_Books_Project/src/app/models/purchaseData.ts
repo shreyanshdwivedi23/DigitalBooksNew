@@ -1,18 +1,18 @@
-export class bookData{
+export class purchaseData{
     
-    PurchaseId:number = 0;
-    OrderNo :string= "";
-    BookId : number =0;
-    ReaderId : number= 1;
-    PurchaseDate :string = "";
-    CreatedBy :number=0;
-    CreatedDate:string="";
-    loginObj = new TblLogin();
+    purchaseId:number = 0;
+    orderNo :string= "";
+    bookId : number =0;
+    readerId : number= 1;
+    purchaseDate :string = "";
+    createdBy :number=0;
+    createdDate:string="";
+    tblLoginObj = new Login();
     
-    bookObj = new TblBook();
+    tblBookObj = new Book();
     }
 
-export class TblLogin{
+export class Login{
     userId:number=0;
     userName:string='';
     userPassword:string='';
@@ -23,7 +23,7 @@ export class TblLogin{
     isRegister:boolean=false;
     }
 
-export class TblBook{
+export class Book{
     bookId:number=0;
     bookTitle:string='';
     bookCategory:string='';

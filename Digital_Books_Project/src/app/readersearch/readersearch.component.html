@@ -40,7 +40,8 @@
 
 <div class="custom_card" *ngFor="let book of bookModels">
         <div class="card" style="width: 18rem;">
-          <img class="card-img-top" src="https://localhost:44396/{{book.bookImage}}">
+          <!-- <img class="card-img-top" src="https://localhost:44396/Resources/Images/{{book.bookImage}}"> -->
+          <img class="card-img-top" src="https://digitalbookimages.blob.core.windows.net/images/{{book.bookImage}}">
           
           <div class="card-body">
             <h5 class="card-title">{{book.bookTitle}}</h5>

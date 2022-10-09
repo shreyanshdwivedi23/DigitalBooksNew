@@ -15,11 +15,11 @@ namespace ReadersApi.Models
         public DateTime? PurchaseDate { get; set; }
         public int? CreatedBy { get; set; }
         public DateTime? CreatedDate { get; set; }
-
+        public bool? IsRefund { get; set; }
+                
         [NotMapped]
-        public TblLogin TblLogin { get; set; } = new TblLogin();
-
-        public TblBook TblBook { get; set; } = new TblBook();
-
+        public TblLogin tblLoginObj { get; set; } = new TblLogin();
+        [NotMapped]
+        public TblBook tblBookObj { get; set; } = new TblBook();
     }
 }

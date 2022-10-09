@@ -18,6 +18,8 @@ namespace DigitalBooksApi.Models
         }
 
         public virtual DbSet<TblBook> TblBooks { get; set; }
+        public virtual DbSet<TblBookPayment> TblBookPayments { get; set; }
+        public virtual DbSet<TblBookPurchase> TblBookPurchases { get; set; }
         public virtual DbSet<TblLogin> TblLogins { get; set; }
         public virtual DbSet<TblUser> TblUsers { get; set; }
 
@@ -92,6 +94,65 @@ namespace DigitalBooksApi.Models
                     .HasMaxLength(255)
                     .IsUnicode(false)
                     .HasColumnName("bookTitle");
+            });
+
+            modelBuilder.Entity<TblBookPayment>(entity =>
+            {
+                entity.HasKey(e => e.PaymentId)
+                    .HasName("PK__TblBookP__A0D9EFC660CA1FEC");
+
+                entity.ToTable("TblBookPayment");
+
+                entity.Property(e => e.PaymentId).HasColumnName("paymentId");
+
+                entity.Property(e => e.BookAmount).HasColumnName("bookAmount");
+
+                entity.Property(e => e.BookPaymentDate)
+                    .HasColumnType("date")
+                    .HasColumnName("bookPaymentDate");
+
+                entity.Property(e => e.CreatedBy).HasColumnName("createdBy");
+
+                entity.Property(e => e.CreatedDate)
+                    .HasColumnType("date")
+                    .HasColumnName("createdDate")
+                    .HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.PurchaseId).HasColumnName("purchaseId");
+
+                entity.Property(e => e.TransactionId)
+                    .IsUnicode(false)
+                    .HasColumnName("transactionId");
+            });
+
+            modelBuilder.Entity<TblBookPurchase>(entity =>
+            {
+                entity.HasKey(e => e.PurchaseId)
+                    .HasName("PK__TblBookP__0261226C90A2F3B7");
+
+                entity.ToTable("TblBookPurchase");
+
+                entity.Property(e => e.PurchaseId).HasColumnName("purchaseId");
+
+                entity.Property(e => e.BookId).HasColumnName("bookId");
+
+                entity.Property(e => e.CreatedBy).HasColumnName("createdBy");
+
+                entity.Property(e => e.CreatedDate)
+                    .HasColumnType("date")
+                    .HasColumnName("createdDate")
+                    .HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.IsRefund).HasColumnName("isRefund");
+
+                entity.Property(e => e.OrderNo).IsUnicode(false);
+
+                entity.Property(e => e.PurchaseDate)
+                    .HasColumnType("date")
+                    .HasColumnName("purchaseDate")
+                    .HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.ReaderId).HasColumnName("readerId");
             });
 
             modelBuilder.Entity<TblLogin>(entity =>

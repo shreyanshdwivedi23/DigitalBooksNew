@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalBooksApi", "DigitalB
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "digitalBooksGateway", "..\digitalBooksGateway\digitalBooksGateway.csproj", "{B65A7FC4-DBB1-4DED-9F21-C3B85E5EBF77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadersApi", "..\ReadersApi\ReadersApi.csproj", "{0B3CC7A3-3342-450F-AC65-5AD50FC2AB41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReadersApi", "..\ReadersApi\ReadersApi.csproj", "{0B3CC7A3-3342-450F-AC65-5AD50FC2AB41}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "..\Common\Common.csproj", "{0DB47BF1-2FF5-44AA-9A13-A08E3FD3E041}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Model", "..\Shared.Model\Shared.Model.csproj", "{014BE777-E32B-44B2-B734-BC9D23F37CF2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{0DB47BF1-2FF5-44AA-9A13-A08E3FD3E041}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DB47BF1-2FF5-44AA-9A13-A08E3FD3E041}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DB47BF1-2FF5-44AA-9A13-A08E3FD3E041}.Release|Any CPU.Build.0 = Release|Any CPU
+		{014BE777-E32B-44B2-B734-BC9D23F37CF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{014BE777-E32B-44B2-B734-BC9D23F37CF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{014BE777-E32B-44B2-B734-BC9D23F37CF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{014BE777-E32B-44B2-B734-BC9D23F37CF2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,14 +4,14 @@
     "C:\\Users\\Admin\\Desktop\\DigitalBooksS-master\\Api_Digital_Books\\DigitalBooksApi\\DigitalBooksApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\Desktop\\DigitalBooksS-master\\Api_Digital_Books\\DigitalBooksApi\\DigitalBooksApi.csproj": {
+    "C:\\Users\\Admin\\Desktop\\DigitalBooksS-master\\Api_Digital_Books\\Common\\Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\DigitalBooksS-master\\Api_Digital_Books\\DigitalBooksApi\\DigitalBooksApi.csproj",
-        "projectName": "DigitalBooksApi",
-        "projectPath": "C:\\Users\\Admin\\Desktop\\DigitalBooksS-master\\Api_Digital_Books\\DigitalBooksApi\\DigitalBooksApi.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\DigitalBooksS-master\\Api_Digital_Books\\Common\\Common.csproj",
+        "projectName": "Common",
+        "projectPath": "C:\\Users\\Admin\\Desktop\\DigitalBooksS-master\\Api_Digital_Books\\Common\\Common.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\Desktop\\DigitalBooksS-master\\Api_Digital_Books\\DigitalBooksApi\\obj\\publish\\win-x64\\",
+        "outputPath": "C:\\Users\\Admin\\Desktop\\DigitalBooksS-master\\Api_Digital_Books\\Common\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,112 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "Consul": {
+              "target": "Package",
+              "version": "[1.6.10.7, )"
+            },
+            "Microsoft.AspNetCore.Hosting.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[6.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win-x64": {
+          "#import": []
+        }
+      }
+    },
+    "C:\\Users\\Admin\\Desktop\\DigitalBooksS-master\\Api_Digital_Books\\DigitalBooksApi\\DigitalBooksApi.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\DigitalBooksS-master\\Api_Digital_Books\\DigitalBooksApi\\DigitalBooksApi.csproj",
+        "projectName": "DigitalBooksApi",
+        "projectPath": "C:\\Users\\Admin\\Desktop\\DigitalBooksS-master\\Api_Digital_Books\\DigitalBooksApi\\DigitalBooksApi.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Admin\\Desktop\\DigitalBooksS-master\\Api_Digital_Books\\DigitalBooksApi\\obj\\publish\\win-x64\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\Admin\\Desktop\\DigitalBooksS-master\\Api_Digital_Books\\Common\\Common.csproj": {
+                "projectPath": "C:\\Users\\Admin\\Desktop\\DigitalBooksS-master\\Api_Digital_Books\\Common\\Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Azure.Storage.Blobs": {
+              "target": "Package",
+              "version": "[12.13.1, )"
+            },
+            "MassTransit": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
+            "MassTransit.AspNetCore": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
+            "MassTransit.RabbitMQ": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[3.1.29, )"

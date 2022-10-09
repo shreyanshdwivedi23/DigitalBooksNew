@@ -25,11 +25,7 @@ namespace ReadersApi.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-I3ENK0M\\SQLEXPRESS;Initial Catalog=DigitalBooksDB;Integrated Security=True");
-            }
+            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -132,7 +128,7 @@ namespace ReadersApi.Models
             modelBuilder.Entity<TblBookPurchase>(entity =>
             {
                 entity.HasKey(e => e.PurchaseId)
-                    .HasName("PK__TblBookP__0261226C0DCA731A");
+                    .HasName("PK__TblBookP__0261226C90A2F3B7");
 
                 entity.ToTable("TblBookPurchase");
 
@@ -146,6 +142,8 @@ namespace ReadersApi.Models
                     .HasColumnType("date")
                     .HasColumnName("createdDate")
                     .HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.IsRefund).HasColumnName("isRefund");
 
                 entity.Property(e => e.OrderNo).IsUnicode(false);
 

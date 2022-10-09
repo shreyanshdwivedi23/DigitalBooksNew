@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { bookData } from '../models/bookData';
-//import { purchaseData } from '../models/purchaseData';
+import { purchaseData } from '../models/purchaseData';
 import { ReaderServiceService } from '../services/reader-service.service';
 
 @Component({
@@ -12,13 +12,17 @@ import { ReaderServiceService } from '../services/reader-service.service';
 })
 export class MyBooksComponent implements OnInit {
 
-  constructor(private http:HttpClient,private _service:ReaderServiceService,private _router:Router,) { }
+  constructor(private http:HttpClient,private _service:ReaderServiceService,private _router:Router) { }
+
+  purchaseModel :purchaseData = new purchaseData();
+  invoiceModel :purchaseData = new purchaseData();
   bookModel: bookData = new bookData();
-  bookModels: Array<bookData> = new Array<bookData>();
+  purchaseModels: Array<purchaseData> = new Array<purchaseData>();
+  
   //purchaseModel: purchaseData= new purchaseData();
   ErrorMessage:any='';
   getMyBooks(){
-    this._service.getMyBooks(this.bookModel).subscribe(res=>this.Success(res)
+    this._service.getMyBooks().subscribe(res=>this.Success(res)
     ,res=>
     {
       console.log(res);
@@ -27,19 +31,31 @@ export class MyBooksComponent implements OnInit {
     });
   }
 
-  Success(respnse:any){
+  Success(response:any){
     //debugger;
-    console.log("search -->");
-    console.log(respnse);
-    this.bookModels = respnse;
+    console.log("my books -->");
+    console.log(response);
+    this.purchaseModels = response;
+    console.log("purchase model");
+    console.log(this.purchaseModels);
   }
 
-  refund(){
+  refund(obj:any){
+    this._service.refundBook(obj).subscribe(res=>{
 
+    }
+    ,res=>
+    {
+      console.log(res);
+      this.ErrorMessage="Some error have occured";
+      document.getElementById('btnErrorMsg')?.click();
+    });
   }
 
-  invoice(){
-
+  invoice(obj:any){
+    debugger;
+    document.getElementById('invoiceModelId')?.click();
+    this.invoiceModel = obj;
   }
 
   ngOnInit(): void {

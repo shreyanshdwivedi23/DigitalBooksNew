@@ -4,6 +4,7 @@ import { bookData } from '../models/bookData';
 import { BookServiceService } from '../services/book-service.service';
 import { Component,EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { LoginServiceService } from '../services/login-service.service';
+import { ReaderServiceService } from '../services/reader-service.service';
 
 @Component({
   selector: 'app-readersearch',
@@ -12,7 +13,7 @@ import { LoginServiceService } from '../services/login-service.service';
 })
 export class ReadersearchComponent implements OnInit {
 
-  constructor(private http:HttpClient,private _service:BookServiceService,private _router:Router,private _loginservice:LoginServiceService) { }
+  constructor(private http:HttpClient,private _service:BookServiceService,private _router:Router,private _loginservice:LoginServiceService, private _readerService:ReaderServiceService) { }
   bookModel: bookData = new bookData();
   bookModels: Array<bookData> = new Array<bookData>();
   ErrorMessage:any='';
@@ -25,7 +26,7 @@ export class ReadersearchComponent implements OnInit {
   }
 
   searchBook(){
-    this._service.SearchAllBooks(this.bookModel).subscribe(res=>this.Success(res)
+    this._readerService.readerSearchAllBooksUrl(this.bookModel).subscribe(res=>this.Success(res)
     ,res=>
     {
       console.log(res);

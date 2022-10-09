@@ -50,7 +50,8 @@
             <td>{{book.bookCategory}}</td>
             <td>{{book.bookPrice}}</td>
             <td>{{book.bookIsActive}}</td>
-            <td><img style="height:100px;width:100px;" src="https://localhost:44396/{{book.bookImage}}"></td>
+            <!-- <td><img style="height:100px;width:100px;" src="https://localhost:44396/Resources/Images/{{book.bookImage}}"></td> -->
+            <td><img style="height:100px;width:100px;" src="https://digitalbookimages.blob.core.windows.net/images/{{book.bookImage}}"></td>
             <td><input type="button" value="Delete" (click)="deleteBook(book.bookId)">
             &nbsp;<input type="button" value="Edit" (click)="editBook(book)">  </td>
             
