@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
 })
 export class LoginServiceService {
 
-  _loginUrl="https://localhost:44396/api/login/login-user";
+  //_loginUrl="https://localhost:44396/api/login/login-user";
+  _loginUrl="http://20.219.1.181/api/gateway/Books/login-user";
   usertype:string='';
   
   constructor(private http:HttpClient, private _router:Router) { }

@@ -92,3 +92,5 @@ C:\Users\Admin\Desktop\DigitalBooksS-master\Api_Digital_Books\DigitalBooksApi\bi
 C:\Users\Admin\Desktop\DigitalBooksS-master\Api_Digital_Books\DigitalBooksApi\bin\Release\netcoreapp3.1\System.Threading.Channels.dll
 C:\Users\Admin\Desktop\DigitalBooksS-master\Api_Digital_Books\DigitalBooksApi\bin\Release\netcoreapp3.1\Common.dll
 C:\Users\Admin\Desktop\DigitalBooksS-master\Api_Digital_Books\DigitalBooksApi\bin\Release\netcoreapp3.1\Common.pdb
+C:\Users\Admin\Desktop\DigitalBooksS-master\Api_Digital_Books\DigitalBooksApi\bin\Release\netcoreapp3.1\Shared.Model.dll
+C:\Users\Admin\Desktop\DigitalBooksS-master\Api_Digital_Books\DigitalBooksApi\bin\Release\netcoreapp3.1\Shared.Model.pdb

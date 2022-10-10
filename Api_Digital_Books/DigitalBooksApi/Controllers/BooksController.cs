@@ -189,10 +189,10 @@ namespace DigitalBooksApi.Controllers
         {
             List<TblBook> listbook = new List<TblBook>();
 
-            db.TblBooks.Where(x => (String.IsNullOrEmpty(book.BookTitle) || x.BookTitle.Contains(book.BookTitle)) &&
+            db.TblBooks.Where(x =>(String.IsNullOrEmpty(book.BookTitle) || x.BookTitle.Contains(book.BookTitle)) &&
             (String.IsNullOrEmpty(book.BookCategory) || x.BookCategory.Contains(book.BookCategory)) &&
             (String.IsNullOrEmpty(book.BookAuthor) || x.BookAuthor.Contains(book.BookAuthor)) &&
-            (String.IsNullOrEmpty(book.BookPrice) || x.BookPrice.Equals(book.BookPrice))).Join(db.TblLogins, t => t.BookCreatedBy,
+            (String.IsNullOrEmpty(book.BookPrice) || x.BookPrice.Equals(book.BookPrice))).Join(db.TblLogins.Where(l => (l.UserId == book.BookCreatedBy)), t => t.BookCreatedBy,
             k => k.UserId, (t, k) => new { t, BookUserName = k.UserName }).ToList().ForEach(o => {
                 TblBook objtblbook = o.t;
                 objtblbook.BookUserName = o.BookUserName;

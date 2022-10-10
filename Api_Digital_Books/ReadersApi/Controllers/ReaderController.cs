@@ -48,8 +48,8 @@ namespace ReadersApi.Controllers
                             BookPrice = b.BookPrice,
                             BookAuthor = u.UserPassword,
                             BookReleasedDate = b.BookReleasedDate,
-                            BookContent = b.BookContent
-                        }).Single();
+                            BookContent = b.BookContent,
+                            BookPurchase = db.TblBookPurchases.Where(p => p.BookId == b.BookId && p.ReaderId==u.UserId).Count()>1?true:false}).Single();
             }
             catch (Exception ex)
             {
@@ -104,15 +104,15 @@ namespace ReadersApi.Controllers
             return listbook;
         }
 
-        [HttpPut]
+        [HttpPost]
         [Route("refundBook")]
-        public IActionResult refundBook([FromBody] TblBookPurchase purchaseObj)
+        public IActionResult refundBook(TblBookPurchase purchaseObj)
         {
-            var existingPurchase = db.TblBookPurchases.Where(x => x.PurchaseId == purchaseObj.PurchaseId).FirstOrDefault<TblBookPurchase>();
+            var existingPurchase = db.TblBookPurchases.Where(x => x.PurchaseId == purchaseObj.PurchaseId).FirstOrDefault();
 
             if (existingPurchase != null)
             {
-                existingPurchase = purchaseObj;
+                //existingPurchase = purchaseObj;
                 existingPurchase.IsRefund = true;
             }
                 //db.TblBookPurchases.Remove(purchaseObj);

@@ -1,4 +1,46 @@
 img.img-fluid.rounded-start {
     width: 100%;
     height: auto;
+    min-height: 220px;
+    object-fit: cover;
+}
+ul.data_link{
+    padding: 0;
+    margin:0;
+}
+ul.data_link li {
+    display: inline-block;
+    width: 50%;
+    font-size: 14px;
+    color: #333;
+}
+ul.data_link li label {
+    font-weight: 700;
+}
+.main_heading:after {
+    position: absolute;
+    content: '';
+    height: 4px;
+    width: 45px;
+    background:  linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #008793);
+    left: 0;
+    bottom: 0;
+}
+
+.main_heading {
+    position: relative;
+    padding-bottom: 10px;
+}
+.card-header {
+    background: #00728a;
+    border: none;
+    color: #fff;
+}
+.card.card_right {
+    border: none;
+    box-shadow: 2px 2px 10px #999;
+}
+.card.card_right li.list-group-item {
+    border: none;
+    font-weight: 600;
 }

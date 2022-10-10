@@ -48,6 +48,7 @@
       "UpstreamPathTemplate": "/api/gateway/Books/searchAllBooks",
       "UpstreamHttpMethod": [ "Post" ]
     },
+    
     {
       "UseServiceDiscovery": true,
       "DownstreamPathTemplate": "/api/Login/login-user",
@@ -64,12 +65,13 @@
       "UpstreamPathTemplate": "/api/gateway/Books/register-user",
       "UpstreamHttpMethod": [ "Post" ]
     },
+    
     {
       "UseServiceDiscovery": true,
       "DownstreamPathTemplate": "/api/Reader/viewBookDetails",
       "DownstreamScheme": "https",
       "ServiceName": "ReaderApiService",
-      "UpstreamPathTemplate": "/api/Reader/viewBookDetails",
+      "UpstreamPathTemplate": "/api/gateway/Reader/viewBookDetails",
       "UpstreamHttpMethod": [ "Get" ]
     },
     {
@@ -77,7 +79,7 @@
       "DownstreamPathTemplate": "/api/Reader/buyBook",
       "DownstreamScheme": "https",
       "ServiceName": "ReaderApiService",
-      "UpstreamPathTemplate": "/api/Reader/buybook",
+      "UpstreamPathTemplate": "/api/gateway/Reader/buybook",
       "UpstreamHttpMethod": [ "Post" ]
     },
     {
@@ -85,8 +87,24 @@
       "DownstreamPathTemplate": "/api/Reader/getMyBooks",
       "DownstreamScheme": "https",
       "ServiceName": "ReaderApiService",
-      "UpstreamPathTemplate": "/api/Reader/getMyBooks",
+      "UpstreamPathTemplate": "/api/gateway/Reader/getMyBooks",
       "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/api/Reader/refundBook",
+      "DownstreamScheme": "https",
+      "ServiceName": "ReaderApiService",
+      "UpstreamPathTemplate": "/api/gateway/Reader/refundBook",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/api/Reader/readerSearchAllBooks",
+      "DownstreamScheme": "https",
+      "ServiceName": "ReaderApiService",
+      "UpstreamPathTemplate": "/api/gateway/Reader/readerSearchAllBooks",
+      "UpstreamHttpMethod": [ "Post" ]
     }
     //{
     //  "UseServiceDiscovery": true,

@@ -6,14 +6,21 @@ import { Injectable } from '@angular/core';
 })
 export class BookServiceService {
 
-  _createBookUrl="https://localhost:44322/api/gateway/Books/addBook";
-  _editBookUrl="https://localhost:44322/api/gateway/Books/editBook";
-  _deleteBookUrl="https://localhost:44322/api/gateway/Books/deleteBook";
-  //_searchBookUrl="https://localhost:44322/api/Books/searchBook";
-  _getAllBookUrl="https://localhost:44322/api/gateway/Books/getAllBooks";
-  _FileUploadUrl="https://localhost:44322/api/gateway/Books/Upload";
-  _BookDeleteUrl="https://localhost:44322/api/gateway/Books/deleteBooks?id=";
-  _searchAllBooksUrl="https://localhost:44322/api/gateway/Books/searchAllBooks";
+  // _createBookUrl="https://localhost:44322/api/gateway/Books/addBook";
+  // _editBookUrl="https://localhost:44322/api/gateway/Books/editBook";
+  // _deleteBookUrl="https://localhost:44322/api/gateway/Books/deleteBook";
+  // //_searchBookUrl="https://localhost:44322/api/Books/searchBook";
+  // _getAllBookUrl="https://localhost:44322/api/gateway/Books/getAllBooks";
+  // _FileUploadUrl="https://localhost:44322/api/gateway/Books/Upload";
+  // _BookDeleteUrl="https://localhost:44322/api/gateway/Books/deleteBooks?id=";
+  // _searchAllBooksUrl="https://localhost:44322/api/gateway/Books/searchAllBooks";
+  _createBookUrl="http://20.219.1.181/api/gateway/Books/addBook";
+  _editBookUrl="http://20.219.1.181/api/gateway/Books/editBook";
+  _deleteBookUrl="http://20.219.1.181/api/gateway/Books/deleteBook";
+  _getAllBookUrl="http://20.219.1.181/api/gateway/Books/getAllBooks";
+  _FileUploadUrl="http://20.219.1.181/api/gateway/Books/Upload";
+  _BookDeleteUrl="http://20.219.1.181/api/gateway/Books/deleteBooks?id=";
+  _searchAllBooksUrl="http://20.219.1.181/api/gateway/Books/searchAllBooks";
   constructor(private http:HttpClient) { }
 
   Bookdelete(id:any)
@@ -55,6 +62,7 @@ export class BookServiceService {
   } 
 
   SearchAllBooks(book:any){
+    book.bookCreatedBy =Number(localStorage.getItem('userId'));
     console.log("login model -->", book)
     return this.http.post<any>(this._searchAllBooksUrl, book);
   }

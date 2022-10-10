@@ -1,44 +1,54 @@
 
-<div class="card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-      <div class="col-md-4">
+<div class="custom_card" >
+  <div class="row">
+    <div class="col-md-9">
+      
+<div class="card mb-3" >
+  <div class="row g-0">
+    <div class="col-md-4">
+      
+      <img src="https://digitalbookimages.blob.core.windows.net/images/{{bookModel.bookImage}}" alt="Home page" class="img-fluid rounded-start"/>
+      <!-- <img src="https://localhost:44396/Resources/Images/{{bookModel.bookImage}}" alt="Home page" class="img-fluid rounded-start"/> -->
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h4 class="main_heading">Book Details</h4>
+        <h5 class="card-title  ">Card title : {{bookModel.bookTitle}}</h5>
+        <ul class="data_link">
+          <li class=""><label>Author :</label>  {{bookModel.bookAuthor}}</li>
+          <li class=""><label>Publisher :</label>  {{bookModel.bookPublisher}}</li>
+          <li class=""><label>Price :</label>  {{bookModel.bookPrice}}</li>
+
+          <li class=""><label>Category :</label>  {{bookModel.bookCategory}}</li>
+          <li class="w-100"><label> Published Date and Year : </label> {{bookModel.bookReleasedDate}}</li>
+          
+        </ul>
+        <p class="card-text">{{bookModel.bookContent}}</p>
         
-        <img src="https://digitalbookimages.blob.core.windows.net/images/{{bookModel.bookImage}}" alt="Home page" class="img-fluid rounded-start"/>
-        <!-- <img src="https://localhost:44396/Resources/Images/{{bookModel.bookImage}}" alt="Home page" class="img-fluid rounded-start"/> -->
       </div>
-      <div class="col-md-8">
+    </div>
+  </div>
+</div>
+<input type="hidden" [(ngModel)]="bookModel.bookId" id="bookId">
+    </div>
+    <div class="col-md-3">
+      <div class="card card_right">
+        <div class="card-header">Buy Book</div>    
+        <div class="card-body pb-0">
+          <h5 class="card-title mb-0">Proceed with COD!</h5> 
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Name : <input id="name" class="form-control" type="text" [(ngModel)]="userModel.userName"></li>
+          <li class="list-group-item">Email : <input id="email"  class="form-control"  type="text" [(ngModel)]="userModel.userEmail"></li>    
+        </ul>
         <div class="card-body">
-          <h5 class="card-title">Card title : {{bookModel.bookTitle}}</h5>
-          <ul class="data_link">
-            <li class="">Author : {{bookModel.bookAuthor}}</li>
-            <li class="">Publisher : {{bookModel.bookPublisher}}</li>
-            <li class="">Price : {{bookModel.bookPrice}}</li>
-            <li class="">Published Date and Year : {{bookModel.bookReleasedDate}}</li>
-            <li class="">Category : {{bookModel.bookCategory}}</li>
-            
-          </ul>
-          <p class="card-text">{{bookModel.bookContent}}</p>
+          <button class="btn btn-primary w-100" type="button" (click)="buyBook()">Buy </button>
           
         </div>
       </div>
     </div>
   </div>
-  <input type="hidden" [(ngModel)]="bookModel.bookId" id="bookId">
-<div class="custom_card">
-  <div class="card" style="width: 18rem;">
-    <div class="card-header">Buy Book</div>    
-    <div class="card-body">
-      <h5 class="card-title">Proceed with buy...</h5> 
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Name : <input id="name" type="text" [(ngModel)]="userModel.userName"></li>
-      <li class="list-group-item">Email : <input id="email" type="text" [(ngModel)]="userModel.userEmail"></li>    
-    </ul>
-    <div class="card-body">
-      <button class="btn btn-primary" type="button" (click)="buyBook()">Buy </button>
-      
-    </div>
-  </div>
+  
 </div>
 
 <!-- <div>

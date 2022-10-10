@@ -129,12 +129,7 @@ namespace DigitalBooksApi
                 endpoints.MapControllers();
             });
 
-            app.UseStaticFiles();
-            app.UseStaticFiles(new StaticFileOptions()
-            {
-                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources/Images")),
-                RequestPath = new PathString("/Resources/Images")
-            });
+            
         }
     }
 }

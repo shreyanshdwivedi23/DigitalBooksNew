@@ -26,6 +26,7 @@ export class RegisterComponent implements OnInit {
   registerUser(){
     this.UserDataModel.isRegister=true;
     this._service.registerUser(this.UserDataModel).subscribe(res=>{
+      //document.getElementById('alertid').className='visiblediv';
       alert("Congratulations, you have been registered successfuly.");
       this._router.navigate(['login']);
     },res=>

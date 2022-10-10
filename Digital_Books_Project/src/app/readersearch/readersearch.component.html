@@ -33,9 +33,9 @@
         </div>
      
       <div class="pt-1 mb-4">
-          <button class="btn btn-dark btn-lg btn-block" (click)="searchBook()" type="button">Search</button>
+          <button class="btn btn-primary btn-lg btn-block" (click)="searchBook()" type="button">Search</button>
         </div>
-        <br/>
+        
         <label style="color: red;">{{ErrorMessage}}</label>
 
 <div class="custom_card" *ngFor="let book of bookModels">
@@ -43,8 +43,8 @@
           <!-- <img class="card-img-top" src="https://localhost:44396/Resources/Images/{{book.bookImage}}"> -->
           <img class="card-img-top" src="https://digitalbookimages.blob.core.windows.net/images/{{book.bookImage}}">
           
-          <div class="card-body">
-            <h5 class="card-title">{{book.bookTitle}}</h5>
+          <div class="card-body pb-0">
+            <h5 class="card-title mb-0">{{book.bookTitle}}</h5>
             
           </div>
           <ul class="list-group list-group-flush">
@@ -54,7 +54,7 @@
             <li class="list-group-item">Author : {{book.bookUserName}}</li>
             <li class="list-group-item">Publish Date : {{book.bookReleasedDate | date: 'dd/MM/yyyy'}}</li>
           </ul>
-          <div class="card-body">
+          <div class="card-body text-center">
             <button class="btn btn-primary" type="button" (click)="viewBookDetails(book.bookId)">View</button>
             
           </div>

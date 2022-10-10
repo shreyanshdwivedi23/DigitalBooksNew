@@ -39,6 +39,7 @@
           "Microsoft.EntityFrameworkCore": "5.0.17",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.17",
           "Microsoft.EntityFrameworkCore.Tools": "5.0.17",
+          "Shared.Model": "1.0.0",
           "Swashbuckle.AspNetCore.Swagger": "6.4.0",
           "Swashbuckle.AspNetCore.SwaggerGen": "6.4.0",
           "Swashbuckle.AspNetCore.SwaggerUI": "6.4.0",
@@ -2020,6 +2021,14 @@
         },
         "compile": {
           "Common.dll": {}
+        }
+      },
+      "Shared.Model/1.0.0": {
+        "runtime": {
+          "Shared.Model.dll": {}
+        },
+        "compile": {
+          "Shared.Model.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/3.1.0.0": {
@@ -4728,6 +4737,11 @@
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
     },
     "Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Shared.Model/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

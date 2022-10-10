@@ -6,12 +6,18 @@ import { Injectable } from '@angular/core';
 })
 export class ReaderServiceService {
 
-  //gatewayUrl = "https://localhost:44322/api/gateway/";
-  _viewBookDetailsUrl="https://localhost:44322/api/gateway/Reader/viewBookDetails";
-  _buyBookUrl ="https://localhost:44322/api/gateway/Reader/buyBook?id=";
-  _getMyBooksUrl = "https://localhost:44322/api/gateway/Reader/getMyBooks";
-  _refundBooksUrl = "https://localhost:44322/api/gateway/Reader/refundBook?";
-  _readerSearchAllBooksUrl = "https://localhost:44322/api/gateway/Reader/readerSearchAllBooks?"
+  // //gatewayUrl = "https://localhost:44322/api/gateway/";
+  // _viewBookDetailsUrl="https://localhost:44322/api/gateway/Reader/viewBookDetails";
+  // _buyBookUrl ="https://localhost:44322/api/gateway/Reader/buyBook?id=";
+  // _getMyBooksUrl = "https://localhost:44322/api/gateway/Reader/getMyBooks";
+  // _refundBooksUrl = "https://localhost:44322/api/gateway/Reader/refundBook?";
+  // _readerSearchAllBooksUrl = "https://localhost:44322/api/gateway/Reader/readerSearchAllBooks?"
+  
+  _viewBookDetailsUrl="http://20.219.1.181/api/gateway/Reader/viewBookDetails";
+  _buyBookUrl ="http://20.219.1.181/api/gateway/Reader/buyBook?id=";
+  _getMyBooksUrl = "http://20.219.1.181/api/gateway/Reader/getMyBooks";
+  _refundBooksUrl = "http://20.219.1.181/api/gateway/Reader/refundBook?";
+  _readerSearchAllBooksUrl = "http://20.219.1.181/api/gateway/Reader/readerSearchAllBooks?"
   userId = 0;
   constructor(private http:HttpClient) { }
 
@@ -44,7 +50,7 @@ export class ReaderServiceService {
 
   refundBook(obj:any){
     console.log( obj)
-    return this.http.post<any>(this._refundBooksUrl, {params:new HttpParams().append("obj",obj)});
+    return this.http.post<any>(this._refundBooksUrl, obj);
   }
   
   getToken(){

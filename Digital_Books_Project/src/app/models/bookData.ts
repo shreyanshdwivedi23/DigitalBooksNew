@@ -15,4 +15,5 @@ export class bookData{
     bookIsDelete:boolean=false;
     bookIsBlock:boolean=false;
     bookUserName:string='';
+    bookPurchase:boolean=false;
 }

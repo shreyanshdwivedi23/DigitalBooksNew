@@ -1,9 +1,17 @@
 .Welcometag{
-    text-align: center ;
+    text-align: left ;
     font-size: 35px ;
-    background-color: "#efefef";
+    color: #fff;
+    /* background-color: "#efefef"; */
+}
+body {
+    background: transparent;
 }
 .img{
     text-align: center;
     margin: auto;
+}
+.card-header {
+    background: #00728a;
+    color: #fff;
 }

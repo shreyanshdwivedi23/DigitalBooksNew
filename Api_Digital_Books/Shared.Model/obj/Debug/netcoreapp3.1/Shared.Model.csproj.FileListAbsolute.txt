@@ -18,3 +18,13 @@ C:\Users\LEVEL UP SOLUTIONS 1\Desktop\Dot-Net-Sep-2022-Conz\CustomerAPP\Shared.M
 C:\Users\LEVEL UP SOLUTIONS 1\Desktop\Dot-Net-Sep-2022-Conz\CustomerAPP\Shared.Model\obj\Debug\netcoreapp3.1\Shared.Model.csproj.CoreCompileInputs.cache
 C:\Users\LEVEL UP SOLUTIONS 1\Desktop\Dot-Net-Sep-2022-Conz\CustomerAPP\Shared.Model\obj\Debug\netcoreapp3.1\Shared.Model.dll
 C:\Users\LEVEL UP SOLUTIONS 1\Desktop\Dot-Net-Sep-2022-Conz\CustomerAPP\Shared.Model\obj\Debug\netcoreapp3.1\Shared.Model.pdb
+C:\Users\Admin\Desktop\DigitalBooksS-master\Api_Digital_Books\Shared.Model\bin\Debug\netcoreapp3.1\Shared.Model.deps.json
+C:\Users\Admin\Desktop\DigitalBooksS-master\Api_Digital_Books\Shared.Model\bin\Debug\netcoreapp3.1\Shared.Model.dll
+C:\Users\Admin\Desktop\DigitalBooksS-master\Api_Digital_Books\Shared.Model\bin\Debug\netcoreapp3.1\Shared.Model.pdb
+C:\Users\Admin\Desktop\DigitalBooksS-master\Api_Digital_Books\Shared.Model\obj\Debug\netcoreapp3.1\Shared.Model.csproj.AssemblyReference.cache
+C:\Users\Admin\Desktop\DigitalBooksS-master\Api_Digital_Books\Shared.Model\obj\Debug\netcoreapp3.1\Shared.Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Desktop\DigitalBooksS-master\Api_Digital_Books\Shared.Model\obj\Debug\netcoreapp3.1\Shared.Model.AssemblyInfoInputs.cache
+C:\Users\Admin\Desktop\DigitalBooksS-master\Api_Digital_Books\Shared.Model\obj\Debug\netcoreapp3.1\Shared.Model.AssemblyInfo.cs
+C:\Users\Admin\Desktop\DigitalBooksS-master\Api_Digital_Books\Shared.Model\obj\Debug\netcoreapp3.1\Shared.Model.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\DigitalBooksS-master\Api_Digital_Books\Shared.Model\obj\Debug\netcoreapp3.1\Shared.Model.dll
+C:\Users\Admin\Desktop\DigitalBooksS-master\Api_Digital_Books\Shared.Model\obj\Debug\netcoreapp3.1\Shared.Model.pdb

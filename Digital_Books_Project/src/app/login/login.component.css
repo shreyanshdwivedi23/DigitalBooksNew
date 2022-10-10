@@ -3,3 +3,6 @@
     border:1px,black;
 
 }
+.card-body i {
+    display: none;
+}

@@ -30,5 +30,7 @@ namespace ReadersApi.Models
         {
             get; set;
         }
+        [NotMapped]
+        public bool BookPurchase { get; set; }
     }
 }

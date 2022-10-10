@@ -96,7 +96,7 @@
       "DownstreamScheme": "https",
       "ServiceName": "ReaderApiService",
       "UpstreamPathTemplate": "/api/gateway/Reader/refundBook",
-      "UpstreamHttpMethod": [ "Put" ]
+      "UpstreamHttpMethod": [ "Post" ]
     },
     {
       "UseServiceDiscovery": true,

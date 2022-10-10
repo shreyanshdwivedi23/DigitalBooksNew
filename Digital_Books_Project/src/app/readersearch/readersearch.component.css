@@ -13,3 +13,14 @@ ul.list-group li {
     border: none !important;
     padding: 5px 20px;
 }
+.card-header {
+    background: #00728a;
+    color: #fff;
+}
+.card {
+    border: none;
+    box-shadow: 2px 2px 10px #999;
+}
+thead.thead-dark {
+    background: #ececec;
+}
