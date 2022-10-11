@@ -75,8 +75,8 @@ namespace DigitalBooksApi.Controllers
 
             //        return Ok(new { ImgPath = foldername + dbPath, Status = "Success" });
             var file = Request.Form.Files[0];
-            var foldername = "Resources/Images/";
-            var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), foldername);
+            //var foldername = "Resources/Images/";
+            //var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), foldername);
             //var pathToSave = Directory.GetCurrentDirectory();
             if (file.Length > 0)
             {
@@ -85,18 +85,18 @@ namespace DigitalBooksApi.Controllers
                     var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
                     var _filename = Path.GetFileNameWithoutExtension(fileName);
                     fileName = _filename + DateTime.Now.ToString("yyyyMMddHHmmss") + ".jpg";
-                    var fullPath = Path.Combine(pathToSave, fileName);
+                    //var fullPath = Path.Combine(pathToSave, fileName);
                     var dbPath = fileName;
-                    using (var stream = new FileStream(fullPath, FileMode.Create))
-                    {
-                        file.CopyTo(stream);
-                    }
+                    //using (var stream = new FileStream(fullPath, FileMode.Create))
+                    //{
+                    //    file.CopyTo(stream);
+                    //}
 
                     string connectionstring = "DefaultEndpointsProtocol=https;AccountName=digitalbookimages;AccountKey=hIhstj+zFMeTvf4MAIs1SlxEdAuCo6dZnsSf70vnPjIUxjyWQf8nMkwlLPPEj7t4ErJnFW6ACavd+AStKVlkNA==;EndpointSuffix=core.windows.net";
                     string containerName = "images";
                     BlobContainerClient container = new BlobContainerClient(connectionstring, containerName);
                     var blob = container.GetBlobClient(fileName);
-                    var blobstream = System.IO.File.OpenRead("Resources/Images/" + fileName);
+                    var blobstream = file.OpenReadStream();
                     await blob.UploadAsync(blobstream);
                     var URI = blob.Uri.AbsoluteUri;
 

@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class RegisterServiceService {
   //_registerUrl="https://localhost:44396/api/Login/register-user";
-  _registerUrl="http://20.219.1.181/api/gateway/Books/Login/register-user";
+  _registerUrl="http://20.219.1.181/api/gateway/Login/register-user";
   constructor(private http:HttpClient) { }
 
   registerUser(login:any){

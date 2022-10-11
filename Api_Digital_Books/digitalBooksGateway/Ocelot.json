@@ -3,7 +3,7 @@
     {
       "UseServiceDiscovery": true,
       "DownstreamPathTemplate": "/api/Books/getAllBooks",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "ServiceName": "DigitalBooksApiService",
       "UpstreamPathTemplate": "/api/gateway/Books/getAllBooks",
       "UpstreamHttpMethod": [ "Get" ]
@@ -11,7 +11,7 @@
     {
       "UseServiceDiscovery": true,
       "DownstreamPathTemplate": "/api/Books/addBook",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "ServiceName": "DigitalBooksApiService",
       "UpstreamPathTemplate": "/api/gateway/Books/addBook",
       "UpstreamHttpMethod": [ "Post" ]
@@ -19,7 +19,7 @@
     {
       "UseServiceDiscovery": true,
       "DownstreamPathTemplate": "/api/Books/Upload",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "ServiceName": "DigitalBooksApiService",
       "UpstreamPathTemplate": "/api/gateway/Books/Upload",
       "UpstreamHttpMethod": [ "Post" ]
@@ -27,7 +27,7 @@
     {
       "UseServiceDiscovery": true,
       "DownstreamPathTemplate": "/api/Books/deleteBooks",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "ServiceName": "DigitalBooksApiService",
       "UpstreamPathTemplate": "/api/gateway/Books/deleteBooks",
       "UpstreamHttpMethod": [ "Delete" ]
@@ -35,7 +35,7 @@
     {
       "UseServiceDiscovery": true,
       "DownstreamPathTemplate": "/api/Books/editBook",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "ServiceName": "DigitalBooksApiService",
       "UpstreamPathTemplate": "/api/gateway/Books/editBook",
       "UpstreamHttpMethod": [ "Put" ]
@@ -43,7 +43,7 @@
     {
       "UseServiceDiscovery": true,
       "DownstreamPathTemplate": "/api/Books/searchAllBooks",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "ServiceName": "DigitalBooksApiService",
       "UpstreamPathTemplate": "/api/gateway/Books/searchAllBooks",
       "UpstreamHttpMethod": [ "Post" ]
@@ -52,17 +52,17 @@
     {
       "UseServiceDiscovery": true,
       "DownstreamPathTemplate": "/api/Login/login-user",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "ServiceName": "DigitalBooksApiService",
-      "UpstreamPathTemplate": "/api/gateway/Books/login-user",
+      "UpstreamPathTemplate": "/api/gateway/Login/login-user",
       "UpstreamHttpMethod": [ "Post" ]
     },
     {
       "UseServiceDiscovery": true,
       "DownstreamPathTemplate": "/api/Login/register-user",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "ServiceName": "DigitalBooksApiService",
-      "UpstreamPathTemplate": "/api/gateway/Books/register-user",
+      "UpstreamPathTemplate": "/api/gateway/Login/register-user",
       "UpstreamHttpMethod": [ "Post" ]
     },
     
@@ -106,14 +106,7 @@
       "UpstreamPathTemplate": "/api/gateway/Reader/readerSearchAllBooks",
       "UpstreamHttpMethod": [ "Post" ]
     }
-    //{
-    //  "UseServiceDiscovery": true,
-    //  "DownstreamPathTemplate": "/WeatherForecast",
-    //  "DownstreamScheme": "https",
-    //  "ServiceName": "orderService",
-    //  "UpstreamPathTemplate": "/api/gateway/order/findall",
-    //  "UpstreamHttpMethod": [ "Get" ]
-    //}
+
   ],
   "GlobalConfiguration": {
     "ServiceDiscoveryProvider": {

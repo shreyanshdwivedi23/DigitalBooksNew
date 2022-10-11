@@ -17,7 +17,7 @@ export class ReaderServiceService {
   _buyBookUrl ="http://20.219.1.181/api/gateway/Reader/buyBook?id=";
   _getMyBooksUrl = "http://20.219.1.181/api/gateway/Reader/getMyBooks";
   _refundBooksUrl = "http://20.219.1.181/api/gateway/Reader/refundBook?";
-  _readerSearchAllBooksUrl = "http://20.219.1.181/api/gateway/Reader/readerSearchAllBooks?"
+  _readerSearchAllBooksUrl = "http://20.219.1.181/api/gateway/Reader/readerSearchAllBooks"
   userId = 0;
   constructor(private http:HttpClient) { }
 
